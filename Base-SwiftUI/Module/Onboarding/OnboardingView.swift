@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     @State var selectedIndex = 0
-    @EnvironmentObject var rootConfig: RootConfig
+    @EnvironmentObject var viewRouter: ViewRouter
     
     var body: some View {
         TabView(selection: $selectedIndex) {
@@ -24,8 +24,8 @@ struct OnboardingView: View {
             .tag(1)
             
             Button("Finish", action: {
-                rootConfig.isFinishOnboarding = true
-                rootConfig.rootType = .auth
+                viewRouter.isFinishOnboarding = true
+                viewRouter.viewRouter = .auth
             })
             .tag(2)
         }

@@ -10,7 +10,7 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject private var viewModel: LoginViewModel = LoginViewModel()
-    @EnvironmentObject var rootConfig: RootConfig
+    @EnvironmentObject var viewRouter: ViewRouter
     
     init() {
     }
@@ -41,8 +41,8 @@ struct LoginView: View {
                 Spacer(minLength: 50)
                 Button("Login") {
                     viewModel.login()
-                    rootConfig.isLoggedIn = true
-                    rootConfig.rootType = .tabbar
+                    viewRouter.isLoggedIn = true
+                    viewRouter.viewRouter = .tabbar
                 }
                 .frame(width: 120)
                 .padding()

@@ -10,15 +10,15 @@ import SwiftUI
 @main
 struct Base_SwiftUIApp: App {
     
-    @StateObject var rootConfig: RootConfig = RootConfig()
+    @StateObject var viewRouter: ViewRouter = ViewRouter()
     
     var body: some Scene {
         WindowGroup {
             RootView()
                 .onAppear(perform: {
-                    rootConfig.initialRootType()
+                    viewRouter.initialRootType()
                 })
-                .environmentObject(rootConfig)
+                .environmentObject(viewRouter)
         }
     }
 }

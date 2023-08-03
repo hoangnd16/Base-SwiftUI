@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-class RootConfig: ObservableObject {
+class ViewRouter: ObservableObject {
     
-    @Published var rootType: RootType = .onboarding
+    @Published var viewRouter: RootType = .onboarding
     
     @AppStorage("isFinishOnboarding") var isFinishOnboarding = false
     @AppStorage("isLoggedIn") var isLoggedIn = false
     
     func initialRootType() {
         if !self.isFinishOnboarding {
-            rootType = .onboarding
+            viewRouter = .onboarding
         } else {
-            rootType = self.isLoggedIn ? .tabbar :.auth
+            viewRouter = self.isLoggedIn ? .tabbar :.auth
         }
     }
     
@@ -31,10 +31,10 @@ class RootConfig: ObservableObject {
 
 struct RootView: View {
     
-    @EnvironmentObject var rootConfig: RootConfig
+    @EnvironmentObject var viewRouter: ViewRouter
     
     var body: some View {
-        switch rootConfig.rootType {
+        switch viewRouter.viewRouter {
         case .onboarding:
             OnboardingView()
         case .auth:

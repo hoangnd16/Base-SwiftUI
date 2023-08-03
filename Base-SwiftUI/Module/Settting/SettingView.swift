@@ -9,13 +9,13 @@ import SwiftUI
 
 struct SettingView: View {
     
-    @EnvironmentObject var rootConfig: RootConfig
+    @EnvironmentObject var viewRouter: ViewRouter
     
     var body: some View {
         VStack(content: {
             Button("Logout", action: {
-                rootConfig.isLoggedIn = false
-                rootConfig.rootType = .auth
+                viewRouter.isLoggedIn = false
+                viewRouter.viewRouter = .auth
             })
             .frame(width: 120)
             .padding()
